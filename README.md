@@ -1,6 +1,21 @@
-# renovate-presets
+# Renovate Config Presets
 
-Presets for Renovate Bot to facilitate dependency updates
+This repository contains [reusable config presets](https://docs.renovatebot.com/config-presets/) that can be reused in your project's Renovate config.
+
+## Usage
+
+To use a preset in your project's config, add it to the [`extends`](https://docs.renovatebot.com/configuration-options/#extends) section of your project's Renovate config:
+
+```json
+{
+    "extends": {
+        [...]
+        "github>mschoettle/renovate-presets//presets/<presetFileName>",
+        [...]
+    }
+}
+```
+
 
 ## Presets
 
