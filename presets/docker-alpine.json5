@@ -1,0 +1,48 @@
+// Ensure to get dependency updates for alpine variants of images.
+// See: https://aarongoldenthal.com/posts/managing-alpine-linux-based-container-images-with-renovate/
+// Source: https://gitlab.com/gitlab-ci-utils/renovate-config/-/blob/main/presets/docker-alpine.json
+{
+    "customManagers": [
+        {
+            "description": "Manage Alpine OS versions in container image tags",
+            "customType": "regex",
+            // https://docs.renovatebot.com/modules/manager/dockerfile/#default-config
+            "fileMatch": [
+                "(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$",
+                "(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$",
+            ],
+            "matchStrings": [
+                "FROM\\s+(?<depName>[\\S]+?):(?<currentValue>[^@\\s]+)(?:@(?<currentDigest>sha256:[a-f0-9]+))?"
+            ],
+            "versioningTemplate": "regex:^(?<compatibility>[\\S]*\\d+\\.\\d+(?:\\.\\d+)?(?:[\\S]*)?-alpine-?)(?<major>\\d+)\\.(?<minor>\\d+)(?:\\.(?<patch>\\d+))?$",
+            "datasourceTemplate": "docker",
+        },
+        {
+            "description": "Manage Alpine OS versions in container image tags",
+            "customType": "regex",
+            "fileMatch": [
+                // gitlabci: https://docs.renovatebot.com/modules/manager/gitlabci/#default-config
+                "\\.gitlab-ci\\.ya?ml$",
+                // docker-compose: https://docs.renovatebot.com/modules/manager/docker-compose/#default-config
+                "(^|/)(?:docker-)?compose[^/]*\\.ya?ml$",
+            ],
+            "matchStrings": [
+                "(?:image:\\s+name:\\s*|image:\\s*|services:\\s+-\\s+)(?<depName>[\\S]+?):(?<currentValue>[^@\\s]+)(?:@(?<currentDigest>sha256:[a-f0-9]+))?"
+            ],
+            "versioningTemplate": "regex:^(?<compatibility>[\\S]*\\d+\\.\\d+(?:\\.\\d+)?(?:[\\S]*)?-alpine-?)(?<major>\\d+)\\.(?<minor>\\d+)(?:\\.(?<patch>\\d+))?$",
+            "datasourceTemplate": "docker",
+        },
+    ],
+    // Ensure regular node updates still follow the node versioning (LTS-awareness).
+    // See: https://github.com/renovatebot/renovate/discussions/29501
+    // The preset "workarounds:nodeDockerVersioning" needs to be ignored in the config.
+    "packageRules": [
+        {
+            "matchDatasources": ["docker"],
+            "matchDepNames": ["node"],
+            "matchManagers": ["dockerfile", "gitlabci"],
+            "versionCompatibility": "^(?<version>[^-]+)(?<compatibility>-.*)?$",
+            "versioning": "node"
+        },
+    ],
+}
