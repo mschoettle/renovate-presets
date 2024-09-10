@@ -23,6 +23,8 @@
             "fileMatch": [
                 // gitlabci: https://docs.renovatebot.com/modules/manager/gitlabci/#default-config
                 "\\.gitlab-ci\\.ya?ml$",
+                // droneci: https://docs.drone.io/pipeline/overview/
+                "\\.drone\\/yml$",
                 // docker-compose: https://docs.renovatebot.com/modules/manager/docker-compose/#default-config
                 "(^|/)(?:docker-)?compose[^/]*\\.ya?ml$",
             ],
@@ -40,7 +42,7 @@
         {
             "matchDatasources": ["docker"],
             "matchDepNames": ["node"],
-            "matchManagers": ["dockerfile", "gitlabci"],
+            "matchManagers": ["dockerfile", "gitlabci", "droneci"],
             "versionCompatibility": "^(?<version>[^-]+)(?<compatibility>-.*)?$",
             "versioning": "node"
         },
