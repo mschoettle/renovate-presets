@@ -30,3 +30,18 @@ Note that if the base version and Alpine version have an update at the same time
 If you want updates for `node` images, you must ignore the preset [`workarounds:nodeDockerVersioning`](https://docs.renovatebot.com/presets-workarounds/#workaroundsnodedockerversioning) in the project's config.
 
 Thanks to [Aaron Goldenthal](https://github.com/renovatebot/renovate/discussions/29501) for help in getting this working.
+
+### [actions-dependency-version](./presets/actions-dependency-version.json5)
+
+Use this to pin a dependency version in GitHub Action workflows.
+For example, when using the [`setup-uv`](https://github.com/astral-sh/setup-uv) action you might want to pin the [`uv`](https://docs.astral.sh/uv/) version that is being installed.
+And, update this version when `uv` is updated.
+
+With this preset you can do that as follows:
+
+```yaml
+- uses: astral-sh/setup-uv@v5.2.1
+  with:
+    # renovate: datasource=pypi dependency=uv
+    version: "0.5.25"
+```
