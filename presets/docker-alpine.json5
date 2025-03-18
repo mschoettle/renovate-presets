@@ -27,6 +27,8 @@
                 "\\.drone\\/yml$",
                 // docker-compose: https://docs.renovatebot.com/modules/manager/docker-compose/#default-config
                 "(^|/)(?:docker-)?compose[^/]*\\.ya?ml$",
+                // docker-compose: support compose templates in copier templates
+                 "(^|/)(?:docker-)?compose[^/]*\\.ya?ml\\.jinja$",
             ],
             "matchStrings": [
                 "(?:image:\\s+name:\\s*|image:\\s*|services:\\s+-\\s+)(?<depName>[\\S]+?):(?<currentValue>[^@\\s]+)(?:@(?<currentDigest>sha256:[a-f0-9]+))?"
