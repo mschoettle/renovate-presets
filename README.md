@@ -45,3 +45,22 @@ With this preset you can do that as follows:
     # renovate: datasource=pypi dependency=uv
     version: "0.5.25"
 ```
+
+### [requires-python](./presets/requires-python.json5)
+
+Use this preset to pin a Python version in `requires-python` in your `pyproject.toml`.
+For example, instead of also specifying the specific Python version in `.python-version` you can be more specific in your `pyproject.yoml`:
+
+```toml
+[project]
+requires-python = "3.13.*"
+```
+
+or
+
+```toml
+[project]
+requires-python = "3.13.2"
+```
+
+This preset ensures that the required Python version is updated.
