@@ -64,3 +64,12 @@ requires-python = "3.13.2"
 ```
 
 This preset ensures that the required Python version is updated.
+
+> [!NOTE]
+> Renovate can [handle this natively now](https://github.com/renovatebot/renovate/discussions/34793#discussioncomment-12997906).
+
+### Packages
+
+#### [typos](./presets/packages/typos.json5)
+
+Limit [`typos`](https://github.com/crate-ci/typos) updates to monthly and group all version updates together.
