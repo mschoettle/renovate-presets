@@ -46,7 +46,10 @@ With this preset you can do that as follows:
     version: "0.5.25"
 ```
 
-### [requires-python](./presets/requires-python.json5)
+> [!NOTE]
+> You can achieve the same outcome using `_VERSION` environment variables using the custom manager [customManagers:githubActionsVersions](https://docs.renovatebot.com/presets-customManagers/#custommanagersgithubactionsversions) provided by Renovate.
+
+### [requires-python](./presets/requires-python.json5) (deprecated)
 
 Use this preset to pin a Python version in `requires-python` in your `pyproject.toml`.
 For example, instead of also specifying the specific Python version in `.python-version` you can be more specific in your `pyproject.yoml`:
@@ -67,6 +70,11 @@ This preset ensures that the required Python version is updated.
 
 > [!NOTE]
 > Renovate can [handle this natively now](https://github.com/renovatebot/renovate/discussions/34793#discussioncomment-12997906).
+
+### [pre-commit-hooks](./presets/pre-commit-hooks.json5)
+
+This preset enables updates the [pre-commit manager](https://docs.renovatebot.com/modules/manager/pre-commit/) and groups pre-commit hook updates together.
+The hooks are updated on a weekly schedule to reduce PR noise.
 
 ### Packages
 

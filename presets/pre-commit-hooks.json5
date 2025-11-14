@@ -1,0 +1,24 @@
+{
+  // Weekly updates for pre-commit hooks
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    // https://docs.renovatebot.com/modules/manager/pre-commit/
+    // https://docs.renovatebot.com/presets-default/#enableprecommit
+    ":enablePreCommit",
+  ],
+  // Reduce noise of pre-commit hooks
+  "packageRules": [
+    {
+      "matchManagers": [
+        "pre-commit",
+      ],
+      "groupName": "pre-commit hooks",
+      "separateMajorMinor": false,
+      "separateMinorPatch": false,
+      // Restrict to weekly updates
+      "schedule": [
+        "before 12pm on Monday",
+      ],
+    },
+  ],
+}
