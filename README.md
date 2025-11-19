@@ -76,6 +76,9 @@ This preset ensures that the required Python version is updated.
 This preset enables updates the [pre-commit manager](https://docs.renovatebot.com/modules/manager/pre-commit/) and groups pre-commit hook updates together.
 The hooks are updated on a weekly schedule to reduce PR noise.
 
+> [!NOTE]
+> If your base configuration changes the defaults of [`separateMinorPatch`](https://docs.renovatebot.com/configuration-options/#separateminorpatch) you might want to specify other defaults for the "pre-commit hooks" group using an additional package rule.
+
 ### Packages
 
 #### [typos](./presets/packages/typos.json5)
