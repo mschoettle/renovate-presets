@@ -1,0 +1,20 @@
+{
+  // Group updates for Docker actions
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  // Reduce noise of pre-commit hooks
+  "packageRules": [
+    {
+      "matchManagers": [
+        "github-actions",
+      ],
+      "matchPackageNames": [
+        "/^docker\\//",
+      ],
+      "groupName": "docker actions",
+      // Restrict to weekly updates
+      "extends": [
+        "schedule:weekly",
+      ],
+    },
+  ],
+}

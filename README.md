@@ -81,6 +81,10 @@ The hooks are updated on a weekly schedule to reduce PR noise.
 
 ### Packages
 
+#### [actions-docker](./presets/packages/actions-docker.json5)
+
+Group updates for Docker actions and schedule them weekly.
+
 #### [typos](./presets/packages/typos.json5)
 
 Limit [`typos`](https://github.com/crate-ci/typos) updates to monthly and group all version updates together.
