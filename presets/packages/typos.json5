@@ -1,21 +1,24 @@
 // Combine typos version updates together and reduce the frequency to monthly
 {
-    "packageRules": [
-        {
-            "matchPackageNames": ["/^crate-ci\\/typos$/"],
-            // combine all versions
-            // https://docs.renovatebot.com/presets-default/#separatemajorreleases
-            // https://docs.renovatebot.com/presets-default/#separatemultiplemajorreleases
-            // https://docs.renovatebot.com/presets-default/#separatepatchreleases
-            "separateMinorPatch": false,
-            "separateMajorMinor": false,
-            "separateMultipleMajor": false,
-            // keep existing branches updated outside of schedule: https://docs.renovatebot.com/presets-default/#updatenotscheduled
-            "updateNotScheduled": true,
-            // schedule monthly: https://docs.renovatebot.com/presets-schedule/#schedulemonthly
-            "schedule": [
-                "* * 1 * *",
-            ],
-        },
-    ],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "/^crate-ci\\/typos$/"
+      ],
+      // combine all versions
+      // https://docs.renovatebot.com/presets-default/#separatemajorreleases
+      // https://docs.renovatebot.com/presets-default/#separatemultiplemajorreleases
+      // https://docs.renovatebot.com/presets-default/#separatepatchreleases
+      "separateMinorPatch": false,
+      "separateMajorMinor": false,
+      "separateMultipleMajor": false,
+      // keep existing branches updated outside of schedule: https://docs.renovatebot.com/presets-default/#updatenotscheduled
+      "updateNotScheduled": true,
+      // schedule monthly: https://docs.renovatebot.com/presets-schedule/#schedulemonthly
+      "schedule": [
+        "* * 1 * *",
+      ],
+    },
+  ],
 }

@@ -1,9 +1,12 @@
 // Custom regex manager for GitHub workflows to pin a dependency version
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^.github/workflows/[^/]*\\.ya?ml$"],
+      "fileMatch": [
+        "^.github/workflows/[^/]*\\.ya?ml$"
+      ],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>.+?) (dependency|depName)=(?<depName>.+?)( versioning=(?<versioning>.+?))?\\s+.*: ['\"]?(?:(?<currentValue>[^'\"\\s]*))?['\"]?"
       ],

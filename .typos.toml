@@ -1,0 +1,5 @@
+# https://github.com/crate-ci/typos/blob/master/docs/reference.md
+
+[default.extend-words]
+# regex pattern in docker-alpine.json5
+ontainer = "ontainer"
