@@ -27,3 +27,28 @@ repos:
       - id: check-renovate
         args: ["--verbose"]
         additional_dependencies: ["json5"]
+
+  # zizmor detects security vulnerabilities in GitHub Actions workflows.
+  - repo: https://github.com/woodruffw/zizmor-pre-commit
+    rev: v1.23.1
+    hooks:
+      - id: zizmor
+
+  # actionlint for verifying correct syntax in GitHub Actions workflows.
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.11
+    hooks:
+      - id: actionlint
+        language: golang
+        additional_dependencies:
+          # actionlint has a shellcheck integration which extracts shell scripts in `run:` steps from GitHub Actions
+          # and checks these with shellcheck.
+          # see also: https://github.com/rhysd/actionlint/pull/482
+          - "github.com/wasilibs/go-shellcheck/cmd/shellcheck@v0.11.1"
+
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: 43.102.8
+    hooks:
+      - id: renovate-config-validator
+        args: ["--strict"]
+        files: ".*\\.json5$"
