@@ -50,11 +50,6 @@
         ":separatePatchReleases",
       ],
     },
-    // Combine uv package, uv image, and uv-pre-commit
-    {
-      "matchPackageNames": ["/uv-pre-commit|uv$/"],
-      "groupName": "uv",
-    },
     // Combine markdownlint-cli2 image and pre-commit
     {
       "matchPackageNames": ["/markdownlint-cli2/"],
@@ -80,6 +75,11 @@
     {
       "matchPackageNames": ["/ruff-pre-commit|ruff$/"],
       "groupName": "ruff",
+    },
+    // Combine uv package, uv image, and uv-pre-commit
+    {
+      "matchPackageNames": ["/uv-pre-commit|uv$/"],
+      "groupName": "uv",
     },
   ]
 }
