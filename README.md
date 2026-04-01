@@ -16,10 +16,15 @@ To use a preset in your project's config, add it to the [`extends`](https://docs
 }
 ```
 
-
 ## Presets
 
 All presets are located in the `presets` directory.
+
+### [base](./presets/base.json5)
+
+A base preset extending Renovate's [config:recommended](https://docs.renovatebot.com/presets-config/#configrecommended) preset.
+It does not extend [config:best-practices](https://docs.renovatebot.com/presets-config/#configbest-practices) directly to set a blanket [minimum release age](https://docs.renovatebot.com/key-concepts/minimum-release-age/) of 7 days.
+Currently, the [`docker:pinDigests` preset](https://docs.renovatebot.com/presets-docker/#dockerpindigests) is **not** included.
 
 ### [docker-alpine](./presets/docker-alpine.json5)
 
@@ -40,36 +45,14 @@ And, update this version when `uv` is updated.
 With this preset you can do that as follows:
 
 ```yaml
-- uses: astral-sh/setup-uv@v5.2.1
+- uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57 # v8.0.0
   with:
     # renovate: datasource=pypi depName=uv
-    version: "0.5.25"
+    version: "0.11.2"
 ```
 
 > [!NOTE]
 > You can achieve the same outcome using `_VERSION` environment variables using the custom manager [customManagers:githubActionsVersions](https://docs.renovatebot.com/presets-customManagers/#custommanagersgithubactionsversions) provided by Renovate.
-
-### [requires-python](https://github.com/mschoettle/renovate-presets/blob/08df8cf3920b3f17d69ed5f5c33b1845e52f288b/presets/requires-python.json5) (**deprecated**)
-
-Use this preset to pin a Python version in `requires-python` in your `pyproject.toml`.
-For example, instead of also specifying the specific Python version in `.python-version` you can be more specific in your `pyproject.toml`:
-
-```toml
-[project]
-requires-python = "3.13.*"
-```
-
-or
-
-```toml
-[project]
-requires-python = "3.13.2"
-```
-
-This preset ensures that the required Python version is updated.
-
-> [!NOTE]
-> Renovate can [handle this natively now](https://github.com/renovatebot/renovate/discussions/34793#discussioncomment-12997906).
 
 ### [pre-commit-hooks](./presets/pre-commit-hooks.json5)
 

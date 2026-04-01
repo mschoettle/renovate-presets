@@ -28,6 +28,21 @@ repos:
         args: ["--verbose"]
         additional_dependencies: ["json5"]
 
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 1.0.0
+    hooks:
+      - id: mdformat
+        language: python
+        args: [--number, --compact-tables]
+        additional_dependencies:
+          - mdformat-gfm-alerts==2.0.0
+          - mdformat-gfm==1.0.0
+
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.22.0
+    hooks:
+      - id: markdownlint-cli2
+
   # zizmor detects security vulnerabilities in GitHub Actions workflows.
   - repo: https://github.com/woodruffw/zizmor-pre-commit
     rev: v1.23.1
