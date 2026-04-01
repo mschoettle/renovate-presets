@@ -42,7 +42,7 @@ With this preset you can do that as follows:
 ```yaml
 - uses: astral-sh/setup-uv@v5.2.1
   with:
-    # renovate: datasource=pypi dependency=uv
+    # renovate: datasource=pypi depName=uv
     version: "0.5.25"
 ```
 

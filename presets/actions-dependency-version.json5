@@ -5,7 +5,7 @@
       "customType": "regex",
       "fileMatch": ["^.github/workflows/[^/]*\\.ya?ml$"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>.+?) dependency=(?<depName>.+?)( versioning=(?<versioning>.+?))?\\s+.*: ['\"]?(?:(?<currentValue>[^'\"\\s]*))?['\"]?"
+        "# renovate: datasource=(?<datasource>.+?) (dependency|depName)=(?<depName>.+?)( versioning=(?<versioning>.+?))?\\s+.*: ['\"]?(?:(?<currentValue>[^'\"\\s]*))?['\"]?"
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     }
