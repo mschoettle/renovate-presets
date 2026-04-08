@@ -26,8 +26,8 @@ A base preset extending Renovate's [config:recommended](https://docs.renovatebot
 It does not extend [config:best-practices](https://docs.renovatebot.com/presets-config/#configbest-practices) directly in order to set a blanket [minimum release age](https://docs.renovatebot.com/key-concepts/minimum-release-age/) of 7 days.
 See the below table for commonalities and differences between this preset and `config:best-practices`:
 
-| | `base` | `config:best-practices` |
-| ------- | ------ | ----------------------- |
+| - | `base` | `config:best-practices` |
+| -- | -- | -- |
 | Base Config | `config:recommended` | `config:recommended` |
 | Enable Config Migration via [`:configMigration`](https://docs.renovatebot.com/presets-default/#configmigration) | Yes | Yes |
 | Highlight abandoned packages via [`abondonments:recommended`](https://docs.renovatebot.com/presets-abandonments/) | Yes | Yes |
