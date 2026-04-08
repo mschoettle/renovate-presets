@@ -7,9 +7,6 @@
     "config:recommended",
     // https://docs.renovatebot.com/presets-default/#separatemultiplemajorreleases
     ":separateMultipleMajorReleases",
-    // set timezone to local one to ensure schedules are run
-    // https://docs.renovatebot.com/configuration-options/#timezone
-    // ":timezone(America/Toronto)",
     // Keep uv lockfile updated regularly
     // https://docs.renovatebot.com/configuration-options/#lockfilemaintenance
     // https://docs.renovatebot.com/presets-default/#maintainlockfilesweekly
@@ -27,13 +24,6 @@
     "github>mschoettle/renovate-presets//presets/actions-dependency-version.json5",
     "github>mschoettle/renovate-presets//presets/pre-commit-hooks.json5",
   ],
-  // https://docs.renovatebot.com/configuration-options/#packagerules
-  // Only rebase existing MRs when the branch is conflicted
-  // This avoids getting spammed by updates to existing MRs
-  // We need to rebase branches to fast-forward merge anyway
-  //
-  // https://docs.renovatebot.com/configuration-options/#rebasewhen
-  // "rebaseWhen": "conflicted",
   // Add a dependency cooldown
   // https://docs.renovatebot.com/key-concepts/minimum-release-age/#minimum-release-age
   // https://blog.yossarian.net/2025/11/21/We-should-all-be-using-dependency-cooldowns
