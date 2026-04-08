@@ -20,13 +20,13 @@ To use a preset in your project's config, add it to the [`extends`](https://docs
 
 All presets are located in the `presets` directory.
 
-### [base](./presets/base.json5)
+### [best-practices](./presets/best-practices.json5)
 
-A base preset extending Renovate's [config:recommended](https://docs.renovatebot.com/presets-config/#configrecommended) preset.
+A best-practices preset extending Renovate's [config:recommended](https://docs.renovatebot.com/presets-config/#configrecommended) preset.
 It does not extend [config:best-practices](https://docs.renovatebot.com/presets-config/#configbest-practices) directly in order to set a blanket [minimum release age](https://docs.renovatebot.com/key-concepts/minimum-release-age/) of 7 days.
 See the below table for commonalities and differences between this preset and `config:best-practices`:
 
-| - | `base` | `config:best-practices` |
+| - | `best-practices` | `config:best-practices` |
 | -- | -- | -- |
 | Base Config | `config:recommended` | `config:recommended` |
 | Enable Config Migration via [`:configMigration`](https://docs.renovatebot.com/presets-default/#configmigration) | Yes | Yes |
@@ -37,7 +37,7 @@ See the below table for commonalities and differences between this preset and `c
 | Pin Docker digests via [`docker:pinDigests`](https://docs.renovatebot.com/presets-docker/#dockerpindigests) | No | Yes |
 | Pin dependencies | Yes, via [`:pinAllExceptPeerDependencies`](https://docs.renovatebot.com/presets-default/#pinallexceptpeerdependencies) | Yes, via [`:pinDevDependencies`](https://docs.renovatebot.com/presets-default/#pindevdependencies) |
 
-In addition, the `base` preset sets the following configuration options:
+In addition, the `best-practices` preset sets the following configuration options:
 
 - Separate multiple major version updates via [`separateMultipleMajor`](https://docs.renovatebot.com/configuration-options/#separatemultiplemajor)
 - Enable Alpine Docker image variant updates via [`docker-alpine.json5`](#docker-alpine) below
