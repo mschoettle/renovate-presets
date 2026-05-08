@@ -5,10 +5,10 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "^.github/workflows/[^/]*\\.ya?ml$"
+        "/^.github/workflows/[^/]*\\.ya?ml$/"
       ],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>.+?) (dependency|depName)=(?<depName>.+?)( versioning=(?<versioning>.+?))?\\s+.*: ['\"]?(?:(?<currentValue>[^'\"\\s]*))?['\"]?"
+        "# renovate: datasource=(?<datasource>[a-zA-Z0-9-._]+?) depName=(?<depName>[^\\s]+?)(?: versioning=(?<versioning>[^\\s]+?))?\\s+version: ['\"]?(?:(?<currentValue>[^'\"\\s]*))?['\"]?"
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     }
