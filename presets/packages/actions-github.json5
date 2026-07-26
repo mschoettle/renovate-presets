@@ -1,0 +1,15 @@
+{
+  // Group updates for actions from GitHub
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "matchManagers": [
+        "github-actions",
+      ],
+      "matchPackageNames": [
+        "/^actions\\//",
+      ],
+      "groupName": "GitHub actions",
+    },
+  ],
+}
