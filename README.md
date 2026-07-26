@@ -90,7 +90,11 @@ The hooks are updated on a weekly schedule to reduce PR noise.
 
 #### [actions-docker](./presets/packages/actions-docker.json5)
 
-Group updates for Docker actions and schedule them weekly.
+Group updates for Docker actions.
+
+#### [actions-github](./presets/packages/actions-github.json5)
+
+Group updates for GitHub actions.
 
 #### [typos](./presets/packages/typos.json5)
 

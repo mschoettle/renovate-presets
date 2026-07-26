@@ -1,5 +1,5 @@
 {
-  // Group updates for Docker actions
+  // Group updates for actions from GitHub
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "packageRules": [
     {
@@ -7,9 +7,9 @@
         "github-actions",
       ],
       "matchPackageNames": [
-        "/^docker\\//",
+        "/^actions\\//",
       ],
-      "groupName": "docker actions",
+      "groupName": "GitHub actions",
     },
   ],
 }
