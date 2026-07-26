@@ -2,7 +2,6 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     // Based on config:recommended preset but we include best practices from config:best-practices
-    // The exception is that docker:pinDigests is currently not used
     //
     // https://docs.renovatebot.com/presets-config/#configrecommended
     // https://docs.renovatebot.com/presets-config/#configbest-practices
@@ -17,6 +16,8 @@
     ":configMigration",
     // https://docs.renovatebot.com/presets-default/#pinallexceptpeerdependencies
     ":pinAllExceptPeerDependencies",
+    // https://docs.renovatebot.com/presets-docker/#dockerpindigests
+    "docker:pinDigests",
     // https://docs.renovatebot.com/presets-abandonments/#abandonmentsrecommended
     "abandonments:recommended",
     // https://docs.renovatebot.com/presets-helpers/#helperspingithubactiondigeststosemver

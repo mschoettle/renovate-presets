@@ -34,7 +34,7 @@ See the below table for commonalities and differences between this preset and `c
 | Maintain Lock Files via [`:maintainLockFilesWeekly`](https://docs.renovatebot.com/presets-default/#maintainlockfilesweekly) | Yes | Yes |
 | GitHub Actions digest pinning | Yes, via [`helpers:pinGitHubActionDigestsToSemver`](https://docs.renovatebot.com/presets-helpers/#helperspingithubactiondigeststosemver) (adds SemVer extraction and comments) | Yes, via [`helpers:pinGitHubActionDigests`](https://docs.renovatebot.com/presets-helpers/#helperspingithubactiondigests) |
 | [Minimum Release Age](https://docs.renovatebot.com/key-concepts/minimum-release-age/) | 7 days across all package managers | 3 days for npm only via [`security:minimumReleaseAgeNpm`](https://docs.renovatebot.com/presets-security/#securityminimumreleaseagenpm) |
-| Pin Docker digests via [`docker:pinDigests`](https://docs.renovatebot.com/presets-docker/#dockerpindigests) | No | Yes |
+| Pin Docker digests via [`docker:pinDigests`](https://docs.renovatebot.com/presets-docker/#dockerpindigests) | Yes | Yes |
 | Pin dependencies | Yes, via [`:pinAllExceptPeerDependencies`](https://docs.renovatebot.com/presets-default/#pinallexceptpeerdependencies) | Yes, via [`:pinDevDependencies`](https://docs.renovatebot.com/presets-default/#pindevdependencies) |
 
 In addition, the `best-practices` preset sets the following configuration options:
