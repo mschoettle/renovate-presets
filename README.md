@@ -75,6 +75,8 @@ With this preset you can do that as follows:
     version: "0.11.2"
 ```
 
+Following the [`customManagers:githubActionsVersions`](https://docs.renovatebot.com/presets-customManagers/#custommanagersgithubactionsversions) preset, you can also specify `packageName`, `extractVersion`, and `registryUrl` (in this order) if needed.
+
 > [!NOTE]
 > You can achieve the same outcome using `_VERSION` environment variables using the custom manager [customManagers:githubActionsVersions](https://docs.renovatebot.com/presets-customManagers/#custommanagersgithubactionsversions) provided by Renovate.
 
