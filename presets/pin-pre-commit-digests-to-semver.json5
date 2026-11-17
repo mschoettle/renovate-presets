@@ -1,0 +1,84 @@
+{
+  // Pin tag-only pre-commit hooks to commit SHAs, the way helpers:pinGitHubActionDigestsToSemver
+  // does for GitHub Actions: `rev: v1.2.3` becomes `rev: <sha>  # frozen: v1.2.3`.
+  // This is in-line with what pre-commit autoupdate --freeze and prek update --freeze produce.
+  //
+  // The built-in pre-commit manager updates `rev: <sha>  # frozen: <tag>` but cannot create it
+  // (https://docs.renovatebot.com/modules/manager/pre-commit/#frozen-revisions), so the regex
+  // manager below pins `rev: <tag>` lines and then hands them back to the built-in manager.
+  // Requires the pre-commit manager to be enabled (`:enablePreCommit`). GitHub-hosted hooks only.
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Pin pre-commit hook revs to commit SHAs with a `# frozen: X.Y.Z` comment",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)\\.pre-commit-config\\.ya?ml$/"
+      ],
+      // recursive: the first string finds the hook's repo and rev lines, the second narrows the match
+      // to the rev line, so only that line is replaced. It must also match the frozen form,
+      // since Renovate re-extracts the file after a pin to confirm it.
+      "matchStringsStrategy": "recursive",
+      "matchStrings": [
+        "repo:[ \\t]*https://github\\.com/(?<depName>[\\w.-]+/[\\w.-]+?)(?:\\.git)?[ \\t]*\\n[ \\t]*rev:[^\\n]*",
+        // currentValue only matches full X.Y.Z tags, so bare SHAs, quoted revs, other tags and
+        // trailing comments are left to the built-in manager
+        "rev:[ \\t]*(?:(?<currentDigest>[0-9a-f]{40})[ \\t]+#[ \\t]*frozen:[ \\t]*)?(?<currentValue>v?\\d+\\.\\d+\\.\\d+)[ \\t]*$",
+      ],
+      "datasourceTemplate": "github-tags",
+      "depTypeTemplate": "pre-commit-repository",
+      "autoReplaceStringTemplate": "rev: {{#if newDigest}}{{newDigest}}  # frozen: {{newValue}}{{else}}{{newValue}}{{/if}}",
+    },
+  ],
+  "packageRules": [
+    // Each rev line has one owner: the built-in manager skips tag-only revs ...
+    // (currentDigestShort: https://github.com/renovatebot/renovate/pull/44353 extracts short frozen SHAs into it)
+    {
+      "matchManagers": [
+        "pre-commit"
+      ],
+      "matchDepTypes": [
+        "repository"
+      ],
+      "matchJsonata": [
+        "$not($exists(currentDigest) or $exists(currentDigestShort))"
+      ],
+      "enabled": false,
+    },
+    // ... and the pinning regex manager skips frozen ones
+    {
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchDepTypes": [
+        "pre-commit-repository"
+      ],
+      "matchJsonata": [
+        "$exists(currentDigest)"
+      ],
+      "enabled": false,
+    },
+    {
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchDepTypes": [
+        "pre-commit-repository"
+      ],
+      "pinDigests": true,
+    },
+    // Only full X.Y.Z tags, with the same regexes as helpers:pinGitHubActionDigestsToSemver
+    {
+      "matchManagers": [
+        "pre-commit",
+        "custom.regex"
+      ],
+      "matchDepTypes": [
+        "repository",
+        "pre-commit-repository"
+      ],
+      "extractVersion": "^(?<version>v?\\d+\\.\\d+\\.\\d+)$",
+      "versioning": "regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+)\\.(?<patch>\\d+))?$",
+    },
+  ],
+}
